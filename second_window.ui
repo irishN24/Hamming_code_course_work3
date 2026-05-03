@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Second_window</class>
+ <widget class="QDialog" name="Second_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>922</width>
+    <height>751</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>301</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Режим: кодировать</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="back_Button_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>630</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Назад</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exit_Button_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>680</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="decode_Button_2">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>650</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Декодировать</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>381</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Информационное слово: </string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>64</y>
+     <width>491</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="encode_Button_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>158</y>
+     <width>881</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Кодировать</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>230</y>
+     <width>881</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

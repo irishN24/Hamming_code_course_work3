@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>918</width>
+    <height>577</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="6" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0">
+      <item>
+       <widget class="QPushButton" name="encode_Button_1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Кодировать</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Введите m (&lt; 10): </string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QSpinBox" name="SpinBox_M">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Проверочная матрица:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
+      <item>
+       <widget class="QPushButton" name="exit_Button_1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Выход</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Декодировать</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0">
+     <widget class="QTextEdit" name="textEdit_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+      <item>
+       <widget class="QPushButton" name="calc_matrix">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Расчитать</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>918</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Код Хэмминга 1</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
