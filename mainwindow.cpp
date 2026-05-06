@@ -30,8 +30,11 @@ void MainWindow::verification_matrix(int m){
         QMessageBox::warning(this, "Ошибка", "m должно быть в диапазоне 1 <= m < 10");
         return;
     }
+    m_value = m;
     int n = (1 << m) - 1;
-    vector<vector<int>> H(m, vector<int>(n, 0));
+    n_value = n;
+    H.assign(m, vector<int>(n, 0));
+
     for (int j = 0; j < n; j++) {
         for (int i = 0; i < m; i++) {
             H[m - 1 - i][j] = (j + 1 >> i) & 1;
@@ -78,6 +81,7 @@ void MainWindow::on_encode_Button_1_clicked()
     //hide();
     Second_window window;
     window.setM(m);
+    window.setVerificationMatrix(H);
     window.setModal(true);
     window.exec();
 }
@@ -93,6 +97,7 @@ void MainWindow::on_decode_Button_1_clicked()
 
     Third_window window;
     window.setM(m);
+    window.setVerificationMatrix(H);
     window.setModal(true);
     window.exec();
 }
