@@ -9,6 +9,8 @@
 #include <cmath>
 #include <algorithm>
 #include <QString>
+#include <QTableWidget>
+#include <QHeaderView>
 
 using namespace std;
 
@@ -43,7 +45,7 @@ void MainWindow::verification_matrix(int m){
         }
         result += "|\n";
     }
-    ui->textEdit_2->setPlainText(result);
+    ui->textEdit->setPlainText(result);
 }
 
 //кнопка "расчитать"
@@ -83,8 +85,14 @@ void MainWindow::on_encode_Button_1_clicked()
 //кнопка перехода в окно 3
 void MainWindow::on_decode_Button_1_clicked()
 {
-    //hide();
+    int m = ui->SpinBox_M->value();
+    if (m < 1 || m >= 10) {
+        QMessageBox::warning(this, "Ошибка", "Введите корректное m (1..9) для декодирования");
+        return;
+    }
+
     Third_window window;
+    window.setM(m);
     window.setModal(true);
     window.exec();
 }
