@@ -44,26 +44,31 @@ void Second_window::on_encode_Button_2_clicked()
     int n = (1 << k) - 1;         // длина кодового слова
     int infoBitsCount = n - k;    // количество информационных битов
 
-    // 1. Получаем информационное слово
+
     QString infoStr = ui->textEdit->toPlainText().trimmed();
     if (infoStr.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Введите информационное слово.");
         return;
     }
+    for (QChar ch : infoStr) {
+        if (ch != '0' && ch != '1') {
+            QMessageBox::warning(this, "Ошибка", "Кодовое слово должно содержать только 0 и 1");
+            return;
+        }
+    }
 
-    // Проверяем, что слово не длиннее infoBitsCount
     if (infoStr.length() > infoBitsCount) {
         QMessageBox::warning(this, "Ошибка",
                              QString("Информационное слово слишком длинное. Максимум %1 бит.").arg(infoBitsCount));
         return;
     }
 
-    // Дополняем нулями слева до нужной длины (можно и справа — по желанию)
+
     while (infoStr.length() < infoBitsCount) {
         infoStr = "0" + infoStr;
     }
 
-    // 2. Построение проверочной матрицы H (размер k x n)
+
     vector<vector<int>> H(k, vector<int>(n, 0));
     for (int j = 0; j < n; j++) {
         for (int i = 0; i < k; i++) {
@@ -71,31 +76,24 @@ void Second_window::on_encode_Button_2_clicked()
         }
     }
 
-    // 3. Определим, какие позиции — проверочные (степени двойки: 1,2,4,8,...)
+
     vector<bool> isParity(n, false);
     for (int i = 0; i < k; i++) {
-        int pos = (1 << i) - 1;  // 0-индексация: позиции 0,1,3,7,...
+        int pos = (1 << i) - 1;
         if (pos < n) isParity[pos] = true;
     }
 
-    // 4. Заполняем кодовое слово (пока нулями)
-    vector<int> codeWord(n, 0);
-    int infoIdx = 0; // индекс в информационной строке
 
-    // Расставляем информационные биты
+    vector<int> codeWord(n, 0);
+    int infoIdx = 0;
+
+
     for (int i = 0; i < n; i++) {
         if (!isParity[i]) {
             codeWord[i] = infoStr[infoIdx].digitValue();
             infoIdx++;
         }
     }
-
-    // 5. Решаем систему H * codeWord^T = 0 (mod 2) для проверочных битов
-    // Каждый проверочный бит p_j связан с определённым уравнением:
-    // строка H_j * codeWord = 0 (j = 0..k-1)
-    // Проверочный бит p_j стоит на позиции (2^j - 1)
-    // Уравнение: p_j + сумма по информационным битам (H[j][i] * codeWord[i]) = 0 mod 2
-    // => p_j = сумма по тем информационным битам, где H[j][i] == 1
 
     for (int j = 0; j < k; j++) {
         int parityPos = (1 << j) - 1;
@@ -104,13 +102,13 @@ void Second_window::on_encode_Button_2_clicked()
         int sum = 0;
         for (int i = 0; i < n; i++) {
             if (i != parityPos && H[j][i] == 1) {
-                sum ^= codeWord[i];  // XOR = сложение по модулю 2
+                sum ^= codeWord[i];
             }
         }
         codeWord[parityPos] = sum;
     }
 
-    // 6. Вывод результата
+
     QString result;
     result += "Информационное слово (" + QString::number(infoBitsCount) + " бит): " + infoStr + "\n";
     result += "Кодовое слово (" + QString::number(n) + " бит): ";
@@ -133,6 +131,7 @@ void Second_window::on_decode_Button_2_clicked()
 {
     hide();
     Third_window window;
+    window.setM(m_value);
     window.setModal(true);
     window.exec();
 }
