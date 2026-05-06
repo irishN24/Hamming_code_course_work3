@@ -27,6 +27,11 @@ void Third_window::setM(int m)
     m_value = m;
     qDebug() << "Third_window: m_value set to" << m_value;
 }
+void Third_window::setVerificationMatrix(const std::vector<std::vector<int>>& matrix)
+{
+    H = matrix;
+    qDebug() << "Third_window: verification matrix received, size:" << H.size() << "x" << (H.empty() ? 0 : H[0].size());
+}
 
 void Third_window::on_exit_Button_2_clicked()
 {
@@ -74,15 +79,45 @@ void Third_window::on_decode_Button_3_clicked()
         }
     }
 
-
     vector<int> receivedWord(n);
     for (int i = 0; i < n; i++) {
         receivedWord[i] = codeWordStr[i].digitValue();
     }
-    vector<vector<int>> H(m, vector<int>(n, 0));
-    for (int j = 0; j < n; j++) {
-        for (int i = 0; i < m; i++) {
-            H[m - 1 - i][j] = (j + 1 >> i) & 1;
+
+    if (H.empty()) {
+
+        H.assign(k, vector<int>(n, 0));
+
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < k; i++) {
+                H[k - 1 - i][j] = ((j + 1) >> i) & 1;
+            }
+        }
+
+        qDebug() << "Third_window: Matrix recalculated, size:" << H.size() << "x" << H[0].size();
+
+
+        QMessageBox::information(this, "Информация",
+                                 "Проверочная матрица не была передана из главного окна.\n"
+                                 "Матрица пересчитана автоматически на основе параметра m=" +
+                                 QString::number(m_value) + ".\n"
+                                                                  "Для корректной работы рекомендуется сначала рассчитать матрицу в главном окне.");
+    } else {
+        if (H.size() != k || H[0].size() != n) {
+            qDebug() << "Third_window: Предупреждение: несоответствие размеров матриц! Ожидалось:" << k << "x" << n
+                     << "Получено:" << H.size() << "x" << H[0].size();
+            QMessageBox::warning(this, "Предупреждение",
+                                "Размеры переданной проверочной матрицы не соответствуют параметру m.\n"
+                                                                          "Матрица будет пересчитана автоматически.");
+
+            H.assign(k, vector<int>(n, 0));
+            for (int j = 0; j < n; j++) {
+                for (int i = 0; i < k; i++) {
+                    H[k - 1 - i][j] = ((j + 1) >> i) & 1;
+                }
+            }
+        } else {
+            qDebug() << "Third_window: Использование предварительно вычисленной проверочной матрицы";
         }
     }
 
@@ -115,7 +150,7 @@ void Third_window::on_decode_Button_3_clicked()
     if (errorPos != 0) {
         result += "Обнаружена ошибка в позиции: " + QString::number(errorPos) + "\n";
         if (errorPos - 1 < n) {
-            correctedWord[errorPos - 1] ^= 1;  // Инвертируем бит
+            correctedWord[errorPos - 1] ^= 1;
             result += "Ошибка исправлена.\n";
         }
     } else {
