@@ -132,6 +132,7 @@ void Second_window::on_decode_Button_2_clicked()
     hide();
     Third_window window;
     window.setM(m_value);
+    window.setVerificationMatrix(H);
     window.setModal(true);
     window.exec();
 }
