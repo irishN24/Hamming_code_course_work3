@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableWidget>
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,7 +16,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void setVerificationMatrix(const std::vector<std::vector<int>>& matrix);
+    std::vector<std::vector<int>> getVerificationMatrix() const { return H; }
+    int getM() const { return m_value; }
+    int getN() const { return n_value; }
 private slots:
 
     void on_calc_matrix_clicked(); //кнопка для расчёта матрицы
