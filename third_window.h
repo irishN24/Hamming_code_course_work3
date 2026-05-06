@@ -14,10 +14,12 @@ class Third_window : public QDialog
 public:
     explicit Third_window(QWidget *parent = nullptr);
     ~Third_window();
-
+    void setM(int m);
+    void setVerificationMatrix(const std::vector<std::vector<int>>& matrix);
 private:
     Ui::Third_window *ui;
-
+    int m_value = 0;
+    std::vector<std::vector<int>> H;
 private slots:
     void on_exit_Button_2_clicked();
     void on_back_Button_3_clicked();
