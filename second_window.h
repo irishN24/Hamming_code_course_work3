@@ -29,6 +29,7 @@ private:
     int m_value = 0;  // параметр m (количество строк)
     int n_value = 0;  // длина кодового слова
     std::vector<std::vector<int>> H;
+    std::vector<std::vector<int>> H_matrix;
 private slots:
     void on_exit_Button_2_clicked();
     void on_back_Button_2_clicked();
